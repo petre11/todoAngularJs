@@ -1,0 +1,83 @@
+<!doctype html>
+<html ng-app="customersApp">
+<head>
+    <title>Iterating Over Data</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body ng-controller="TasksController">
+<div class="container">
+    <div class="row">
+        <div class="col col-xs-12">
+            <h2 class="mb-2">TO <span class="text-success">DO</span></h2>
+            <form class="form-inline mb-5">
+                <div class="form-group mb-2">
+                    <label class="mr-2" for="taskName">Task to do: </label>
+                    <input id="taskName"
+                           class="form-control"
+                           type="text"
+                           placeholder="Task to do"
+                           ng-model="task"/>
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label class="mr-2"
+                           for="taskPrior"
+                           ng-model="task">Task prioryty</label>
+                    <select id="taskPrior"
+                            class="form-control"
+                            ng-options="option for option in priority"
+                            ng-model="selected"></select>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-click="addTask(task,selected)">Add task</button>
+            </form>
+
+
+            <div class="row">
+                <div class="col col-xs-12">
+                    <div class="row">
+                        <div class="col col-xs-12">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col" ng-click="doSort('name')">#</th>
+                                    <th scope="col" ng-click="doSort('name')">Task</th>
+                                    <th scope="col" ng-click="doSort('Priority')">Priority</th>
+                                    <th scope="col" ng-click="doSort('Priority')"></th>
+                                    <th scope="col" ng-click="doSort('Priority')"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="($index, task) in tasks | filter:taskFilter | orderBy:sortBy:reverse"
+                                    ng-class="{'table-warning': task.priority == 'Normal' && !task.done,'table-danger': task.priority == 'High' && !task.done,'table-success': task.done}">
+                                    <th scope="row">{{$index}}</th>
+                                    <td>{{ task.name }}</td>
+                                    <td>{{ task.priority }}</td>
+                                    <td><button type="submit" class="btn btn-success ml-5" ng-click="doneTask(task)">Done</button></td>
+                                    <td><button type="submit" class="btn btn-danger ml-5" ng-click="removeTask($index)">Remove</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>{{test}}</p>
+        </div>
+    </div>
+</div>
+<script src="angular.js"></script>
+<script src="app/app.js"></script>
+<script src="app/controllers/tasksController.js"></script>
+</body>
+</html>
+
+<!--<div class="row">-->
+    <!--<div class="col-xs-12">-->
+        <!--<div class="form-group">-->
+            <!--<label for="filter"></label>-->
+            <!--<input id="filter" type="text" ng-model="tasksFilter.name"/>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
