@@ -1,0 +1,9 @@
+<tr ng-repeat="($index, task) in tasks"
+    ng-class="{'table-warning': task.priority == 'Normal' && !task.done,'table-danger': task.priority == 'High' && !task.done,'table-success': task.done}">
+    <th scope="row">{{$index}}</th>
+    <td>{{ task.name }}</td>
+    <td>{{ task.priority }}</td>
+    <td><a href="#/tasks/{{task.id}}" role="button" class="btn btn-sm btn-primary ml-5">Edit</a></td>
+    <td><button type="button" class="btn btn-sm btn-success ml-5" ng-click="doneTask(task)">Done</button></td>
+    <td><button type="button" class="btn btn-sm btn-danger ml-5" ng-click="removeTask($index)">Remove</button></td>
+</tr>

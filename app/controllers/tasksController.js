@@ -1,51 +1,39 @@
-
-
 (function() {
     
-    var TasksController = function ($scope) {
-        $scope.sortBy = 'name';
-        $scope.reverse = false;
+    var TasksController = function ($scope, tasksService) {
 
-        $scope.tasks = [
-            {name:'Learn Angular js', priority:'High',done:false},
-            {name:'Visit Mumbai', priority:'Low',done:false},
-            ];
+        var tcs = $scope;
 
-        $scope.priority = ['Low','Normal','High'];
+        tcs.tasks = tasksService.getTasks();
+        tcs.priority = ['Low','Normal','High'];
 
-        $scope.doSort = function(propName) {
-           $scope.sortBy = propName;
-           $scope.reverse = !$scope.reverse;
-            console.log($scope);
-        };
-        
-        $scope.addTask = function (task,priority) {
+        tcs.addTask = function (task,priority) {
             var newTask = {
+                id:tcs.tasks.length,
                 name:task,
                 priority:priority,
                 done:false
             };
 
             if(task !== "" && priority !== undefined) {
-                $scope.tasks.push(newTask);
-                console.log($scope.tasks)
+                tcs.tasks.push(newTask);
             }
 
         };
 
-        $scope.doneTask = function (task) {
+        tcs.doneTask = function (task) {
             task.done ? task.done = false : task.done = true;
         };
 
-        $scope.removeTask = function (index) {
-            $scope.tasks.splice(index, 1);
+        tcs.removeTask = function (index) {
+            tcs.tasks.splice(index, 1);
         }
 
       };
 
-    TasksController.$inject = ['$scope'];
+    TasksController.$inject = ['$scope', 'tasksService'];
 
-    angular.module('customersApp')
+    angular.module('toDoApp')
       .controller('TasksController', TasksController);
     
 }());

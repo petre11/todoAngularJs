@@ -1,0 +1,20 @@
+<form class="form-inline mb-5">
+    <div class="form-group mb-2">
+        <label class="mr-2" for="taskName">Task to do: </label>
+        <input id="taskName"
+               class="form-control"
+               type="text"
+               placeholder="Task to do"
+               ng-model="task"/>
+    </div>
+    <div class="form-group mx-sm-3 mb-2">
+        <label class="mr-2"
+               for="taskPrior"
+               ng-model="task">Task prioryty</label>
+        <select id="taskPrior"
+                class="form-control"
+                ng-options="option for option in priority"
+                ng-model="selected"></select>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="addTask(task,selected)">Add task</button>
+</form>
