@@ -1,6 +1,6 @@
 <form class="form-inline mb-5">
     <div class="form-group mb-2">
-        <label class="mr-2" for="taskName">Task to do: </label>
+        <label class="mr-2" for="taskName">{{$ctrl.inputName}}</label>
         <input id="taskName"
                class="form-control"
                type="text"
@@ -10,7 +10,7 @@
     <div class="form-group mx-sm-3 mb-2">
         <label class="mr-2"
                for="taskPrior"
-               ng-model="task">Task prioryty</label>
+               ng-model="task">{{$ctrl.selectName}}</label>
         <select id="taskPrior"
                 class="form-control"
                 ng-options="option for option in priority"

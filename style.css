@@ -1,0 +1,33 @@
+.table,ul {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.table {
+    padding: 0;
+}
+
+.black {
+    background-color: #21262a;
+    color: #fff;
+}
+
+ul{
+    padding: 0 15px;
+    color:background-color: #21262a;
+}
+
+li {
+    width: 20%;
+    padding: 10px 0;
+    list-style: none;
+}
+
+li:nth-of-type(1) {
+    width: 10%;
+}
+
+li:nth-of-type(2) {
+    width: 30%;
+}

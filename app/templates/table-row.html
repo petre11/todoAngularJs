@@ -1,8 +1,0 @@
-<tr ng-repeat="($index, task) in tasks | filter:taskFilter | orderBy:sortBy:reverse"
-    ng-class="{'table-warning': task.priority == 'Normal' && !task.done,'table-danger': task.priority == 'High' && !task.done,'table-success': task.done}">
-    <th scope="row">{{$index}}</th>
-    <td>{{ task.name }}</td>
-    <td>{{ task.priority }}</td>
-    <td><button type="submit" class="btn btn-success ml-5" ng-click="doneTask(task)">Done</button></td>
-    <td><button type="submit" class="btn btn-danger ml-5" ng-click="removeTask($index)">Remove</button></td>
-</tr>
