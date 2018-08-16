@@ -12,7 +12,8 @@
                priority:'Low',
                done:false,
            }
-       ];
+       ],
+         priority = ['Low','Normal','High'];
 
        this.getTasks = function () {
            return tasks;
@@ -22,6 +23,11 @@
 
            return tasks[taskId]
        };
+
+     this.getPrioryty = function (taskId) {
+
+       return priority
+     };
 
    };
 

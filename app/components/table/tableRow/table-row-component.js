@@ -11,6 +11,12 @@ angular.module('toDoApp').component('tableRowComponent', {
 function TableRowController($scope,tasksService) {
     var tablRowctrl = this;
     tablRowctrl.tasks = tasksService.getTasks()
-    console.log(tablRowctrl.tasks)
-    console.log(tasksService)
+
+  tablRowctrl.doneTask = function (task) {
+    task.done ? task.done = false : task.done = true;
+  };
+
+  tablRowctrl.removeTask = function (index) {
+    tablRowctrl.tasks.splice(index, 1);
+  }
 }

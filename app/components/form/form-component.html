@@ -13,8 +13,8 @@
                ng-model="task">{{$ctrl.selectName}}</label>
         <select id="taskPrior"
                 class="form-control"
-                ng-options="option for option in priority"
+                ng-options="option for option in $ctrl.priority"
                 ng-model="selected"></select>
     </div>
-    <button type="submit" class="btn btn-primary" ng-click="addTask(task,selected)">Add task</button>
+    <button type="submit" class="btn btn-primary" ng-click="$ctrl.addTask(task,selected)">Add task</button>
 </form>
